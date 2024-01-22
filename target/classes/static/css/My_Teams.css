@@ -1,0 +1,187 @@
+/*--------------------------------------------------------------
+# Team
+--------------------------------------------------------------*/
+body {
+  counter-reset: my-sec-counter;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+.team .member {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+}
+
+.team .member .pic {
+  overflow: hidden;
+}
+img, svg {
+    vertical-align: middle;
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+.table-data-res{
+   position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.team .member .member-info {
+  position: absolute;
+  top: 85%;
+  left: 20px;
+  right: 20px;
+  background: #fff;
+  padding: 20px 0;
+  color: #2f4d5a;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  max-height: 95px;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.team .member:hover .member-info {
+  max-height: 300px;
+}
+
+.team .member h4 {
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #2f4d5a;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.team .member h4::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: #b1cbd7;
+  bottom: 0;
+  left: calc(50% - 25px);
+}
+
+.team .member span {
+  font-style: italic;
+  display: block;
+  font-size: 13px;
+}
+
+.team .member .social {
+  margin-top: 15px;
+}
+
+.team .member .social a {
+  transition: color 0.3s;
+  color: #52869d;
+}
+
+.team .member .social a:hover {
+  color: #67b0d1;
+}
+
+.team .member .social i {
+  font-size: 16px;
+  margin: 0 2px;
+}
+.row>* {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: var(--bs-gutter-y);
+}
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+.section-title h2 {
+    font-size: 25px;
+    font-weight: bold;
+    position: relative;
+    margin-bottom: 30px;
+    color: #2f4d5a;
+    z-index: 2;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+.account {
+    position: relative;
+    z-index: 9;
+    margin: 20px 0px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.user_heading {
+    color: #000;
+    font-weight: 500;
+    font-size: 20px;
+    text-transform: uppercase;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.user_list tr {
+    margin: 0;
+    padding: 0 15px 15px;
+    list-style: none;
+    overflow: hidden;
+}
+.user_list tr td  {
+    padding: 2px 2px;
+    color: #000;
+    height: 100%;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    vertical-align: middle;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.user_list ul li span {
+    font-weight: 500;
+}
+.user_list ul li p {
+    color: #000;
+    margin-bottom: 0;
+}
+
+@media (max-width: 992px) {
+  .team .member {
+    margin-bottom: 110px;
+  }
+}
+@media (min-width: 992px){
+	.col-lg-4 {
+	    flex: 0 0 auto;
+	    width: 33.33333333%;
+	}
+}
+/* @media (min-width: 768px){
+.col-md-6 {
+    flex: 0 0 auto;
+    width: 50%;
+}
+} */
+

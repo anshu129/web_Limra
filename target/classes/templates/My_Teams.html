@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="images/favicon.ico" rel="icon">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="/css/dashboard.css">
+	<link rel="stylesheet" href="/css/My_Teams.css">
+    <link href="css/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	<title>Limra Infracon | www.limrainfracon.com</title>
+	<style>
+	.container{
+	   max-width: 1000px;
+	   margin: 0 auto;
+	   padding: 20px;
+	   background-color: #fff;
+   }
+   .boc-search{
+     display:none;
+   }
+/*    html, body{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin:0;
+  overflow: hidden;
+  font-family: Helvetica;
+} */
+#tree{
+  width:100%;
+  height:100%;
+}
+	</style>
+	<script src="/js/orgchart.js"></script>
+</head>
+<body >
+	<section id="hero">
+	<a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+	<!-- SIDEBAR -->
+	<div th:replace="sidebar :: sidebar"></div>
+	<!-- SIDEBAR -->
+	<!-- CONTENT -->
+	<section id="content" style="margin-top: -20px;">
+		<!-- NAVBAR -->
+		<div th:replace="header :: header"></div>
+		<!-- NAVBAR -->
+	<!-- CONTENT -->
+	<main>
+	<div class="row">
+	<div class="table-data panel-body" style="margin-top:0px;">
+     <!-- Main content -->
+     <div class="container account">
+     <div style="width:100%; height:700px;" id="tree"></div>
+     <!-- ======= Team Section ======= -->
+   <!--  <section id="team" class="team">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>My Teams</h2>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="member" data-aos="fade-up">
+              <div class="pic"><img src="/images/team/team-1.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Walter White</h4>
+                <span>Chief Executive Officer</span>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="member" data-aos="fade-up" data-aos-delay="150">
+              <div class="pic"><img src="/images/team/team-2.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Sarah Jhonson</h4>
+                <span>Product Manager</span>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="member" data-aos="fade-up" data-aos-delay="300">
+              <div class="pic"><img src="/images/team/team-3.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>William Anderson</h4>
+                <span>CTO</span>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section> --><!-- End Team Section -->
+   <!--  <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+       <h2>My Teams</h2>
+     </div>
+	 <table id="example" class="display nowrap" style="width:100%">
+        <thead>
+            <tr>
+                <th>S.No.</th>
+                <th>Name</th>
+                <th>Mobile No.</th>
+                <th>Referral ID</th>
+                <th>Registration Date</th>
+                <th>Status</th>
+                <th>Investment</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user: ${userList}">
+			    <td th:text="${user.name}" />
+			    <td th:text="${user.contactNumber}" />
+			    <td th:text="${user.referalId}" />
+			    <td th:text="${#dates.format(user.createdDate, 'dd-MM-yyyy HH:mm')}" />
+			    <td>KYC Pending</td>
+			    <td>Free joining</td>
+			</tr>
+        </tbody>
+    </table> -->
+ </div>
+</div>
+</div>
+</main>
+</section>
+</section>
+<script src="/js/dashboard.js"></script>
+<script src="/js/jquery-3.5.1.js"></script>
+<!-- <script src="/js/jquery.dataTables.min.js"></script>
+<script src="/js/responsive.dataTables.min.js"></script>
+<script src="/js/rowReorder.dataTables.min.js"></script> -->
+
+	<script>
+	    $('#sidebar>ul>li').removeClass("active");
+        $('#sidebar>ul>li:nth-child(5)').addClass("active");
+    </script>
+</body>
+<script>
+var data = [];
+$(document).ready(function () {
+   /*  $('#example').DataTable({
+    	responsive: true
+    }); */
+    
+    barChartMethod();
+    var chart = new OrgChart(document.getElementById("tree"), {
+        nodeBinding: {
+            field_0: "name"
+        },
+        nodes:data
+    });
+}); 
+    function barChartMethod(){
+    	//debugger;
+    	$.ajax({
+    			contentType : "application/json",
+    			url : "My_Users",
+    			method : 'GET',
+    			dataType : 'json',
+    			async:false,
+    			//data : JSON.stringify(data),
+    			success : function(callback) {
+                //debugger;
+                          var i=0
+                         for(i;i<callback.length;i++){
+                        	 if(callback[i].pid ==0){
+                        		 data[i] = {id: callback[i].id, name: callback[i].name};
+                        		 //data["name"] = callback[i].name;
+                        	 }else{
+                        		 data[i] = {id: callback[i].id, pid: callback[i].pid,  name: callback[i].name};
+                        		 /* data["id"] = callback[i].id;
+                        		 data["pid"] = callback[i].pid;
+                        		 data["name"] = callback[i].name; */
+                        	 }
+                        	 
+                         }  
+		                //data=callback;
+
+                      
+    				},error: function(error){
+    			      console.log(JSON.stringify(error));
+    			   
+    		}
+    	});
+    }
+
+</script>
+</html>

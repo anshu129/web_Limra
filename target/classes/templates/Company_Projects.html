@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="images/favicon.ico" rel="icon">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="/css/dashboard.css">
+	<link rel="stylesheet" href="/css/projects.css">
+	<title>Limra Infracon | www.limrainfracon.com</title>
+	
+</head>
+<body >
+<section id="hero">
+<a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+	<!-- SIDEBAR -->
+	<p th:replace="Admin_Sidebar :: Admin_Sidebar"></p>	
+	<!-- SIDEBAR -->
+	<!-- CONTENT -->
+	<section id="content" style="margin-top: -20px;">
+		<!-- NAVBAR -->
+		<p th:replace="Admin_Navbar :: Admin_Navbar"></p>
+		<!-- NAVBAR -->
+	<!-- CONTENT -->
+	<main>
+	<div class="create-btn"><a href="/admin/addProject"><input type="button" class="submit" value="Add Project" /></a></div>
+     <div class="container">
+     <div class="form" style="overflow: scroll;">
+        <!--  <h2>Show Different Images Depending on Browser Width</h2>
+		<p>Resize the browser width and the image will change at 600px and 1500px.</p> -->
+		<picture>
+		<div class="thumbnail">
+		  <a href="#"><img src="/images/img_flowers.jpg" alt="Flowers" class="project-img" style="width:auto;"></a>
+		  <div class="caption">
+		  	  <h3>Dhaulana project</h3>
+              <p>contacto@windberg.cl</p>
+              <p>+56983874071   |   +56228231294</p>
+              <p>El Aguilucho 3174, Providencia, Región Metropolitana</p>
+          </div>
+          </div>
+		</picture>
+         
+   		</div>
+     </div>
+	</main>
+  </section>
+</section>
+<script src="/js/dashboard.js"></script>
+<script src="/js/jquery-3.5.1.js"></script>
+<script>
+    $('#sidebar>ul>li').removeClass("active");
+       $('#sidebar>ul>li:nth-child(7)').addClass("active");
+   </script>
+</body>
+<script>
+</script>
+</html>

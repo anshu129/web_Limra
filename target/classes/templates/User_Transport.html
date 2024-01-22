@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="images/favicon.ico" rel="icon">
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<title>Limra Infracon | www.limrainfracon.com</title>
+<link rel="stylesheet" href="/css/transport.css">
+<link rel="stylesheet" href="/css/dashboard.css">  
+</head>
+<body>
+<section id="hero">
+	<a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+<!-- SIDEBAR -->
+<div th:replace="sidebar :: sidebar"></div>
+<!-- SIDEBAR -->
+<!-- CONTENT -->
+<section id="content" style="margin-top: -20px;">
+	<!-- NAVBAR -->
+	<div th:replace="header :: header"></div>
+	<!-- NAVBAR -->
+<!-- CONTENT -->
+<main>
+<div class="container">
+<h3><span class="head2">TRANSPORT SHEET</span></h3>
+  <div class="form-container">
+    <div class="left-section">
+      <div class="input-container ic2">
+        <!-- <label for="date" class=""></label> -->
+        <input class="input" type="date" id="date" name="date" placeholder="dd-mm-yyyy" required>
+      </div>
+      <div class="input-container ic2">
+        <!-- <label for="time" class=""></label> -->
+        <input class="input" type="time" id="time" name="time" placeholder="--:--" required>
+      </div>
+      <div class="input-container ic2">
+        <!-- <label for="car-model" class="">Car Model:</label> -->
+        <input class="input" type="text" id="car-model" name="car-model" placeholder="Car Model" required>
+      </div>
+      <div class="input-container ic2">
+        <!-- <label for="reg-no" class="">Registration No:</label> -->
+        <input class="input" type="text" id="reg-no" name="reg-no" placeholder="Registration No" required />
+      </div>
+       <div class="input-container ic2">
+        <!-- <label for="reg-no" class="">Registration No:</label> -->
+        <input class="input" type="text" id="dname" name="dname" placeholder="Driver name" required />
+      </div>
+    </div>
+
+    <div class="right-section">
+    
+      <div class="input-container ic2">
+       <!--  <label for="visitor-slip" class="">Visitor Slip:</label> -->
+        <input class="input" type="text" id="visitor-slip" name="visitor-slip" placeholder="Visitor Slip" required />
+      </div>
+      <div class="input-container ic2">
+        <!-- <label for="flc-number" class="">:</label> -->
+        <input class="input" type="text" id="flc-number" name="flc-number" placeholder="FLC Number" required />
+      </div>
+      <div class="input-container ic2">
+        <!-- <label for="associate-name" class="">Associate Name:</label> -->
+        <input class="input" type="text" id="associate-name" name="associate-name" placeholder="Associate Name" required />
+      </div>
+      <div class="input-container ic2">
+        <!-- <label for="associate-flc-no" class="">Associate FLC No:</label> -->
+        <input class="input" type="text" id="associate-flc-no" name="associate-flc-no" placeholder="Associate FLC No" required />
+      </div>
+    </div>
+  </div>
+<div class="table1">
+  <table id="table">
+    <thead>
+      <tr>
+        <!-- <th  style="width: 10%;">NO.</th> -->
+        <th  style="width: 30%;">Client Name</th>
+        <th  style="width: 20%;">Mobile No.</th>
+        <th  style="width: 40%;">Pickup Location</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+    
+    <tr>
+    <!-- <td><input type="text" id="serialno." name="serialno."></td> -->
+    <td><input type="text" id="clientname0" name="clientname"></td>
+    <td><input type="text" id="mobileno0" name="mobileno"></td>
+    <td><input type="text" id="pickuplocation0" name="pickuplocation"></td>
+    </tr>
+   
+    <tr>
+    <!-- <td><input type="text" id="serialno." name="serialno."></td> -->
+    <td><input type="text" id="clientname1" name="clientname"></td>
+    <td><input type="text" id="mobileno1" name="mobileno"></td>
+    <td><input type="text" id="pickuplocation1" name="pickuplocation"></td>
+    </tr>
+    
+    <tr>
+  <!--  <td><input type="text" id="serialno." name="serialno."></td> -->
+    <td><input type="text" id="clientname2" name="clientname"></td>
+    <td><input type="text" id="mobileno2" name="mobileno"></td>
+    <td><input type="text" id="pickuplocation2" name="pickuplocation"></td>
+    </tr>
+    
+    <tr>
+     <!-- <td><input type="text" id="serialno." name="serialno."></td> -->
+    <td><input type="text" id="clientname3" name="clientname"></td>
+    <td><input type="text" id="mobileno3" name="mobileno"></td>
+    <td><input type="text" id="pickuplocation3" name="pickuplocation"></td>
+    </tr>
+    
+    <tr>
+   <!--  <td><input type="text" id="serialno." name="serialno."></td> -->
+    <td><input type="text" id="clientname4" name="clientname"></td>
+    <td><input type="text" id="mobileno4" name="mobileno"></td>
+    <td><input type="text" id="pickuplocation4" name="pickuplocation"></td>
+    </tr>
+    
+    <tr>
+   <!--  <td><input type="text" id="serialno." name="serialno."></td> -->
+    <td><input type="text" id="clientname5" name="clientname"></td>
+    <td><input type="text" id="mobileno5" name="mobileno"></td>
+    <td><input type="text" id="pickuplocation5" name="pickuplocation"></td>
+    </tr>
+    
+    <tr>
+    <!-- <td><input type="text" id="serialno." name="serialno."></td> -->
+    <td><input type="text" id="clientname6" name="clientname"></td>
+    <td><input type="text" id="mobileno6" name="mobileno"></td>
+    <td><input type="text" id="pickuplocation6" name="pickuplocation"></td>
+    </tr>
+    
+    </tbody>
+  </table>
+</div>
+ <input class="submit" type="button" onclick="submitTransportDetails()" value="Submit">
+</div>
+</main>
+</section>
+</section>
+</body>
+<script src="/js/jquery_3.6.4_jquery.min.js"></script>
+<script src="/js/user_transport.js"></script>
+<script src="/js/dashboard.js"></script>
+<script>
+    $('#sidebar>ul>li').removeClass("active");
+       $('#sidebar>ul>li:nth-child(7)').addClass("active");
+</script>
+</html>

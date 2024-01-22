@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="images/favicon.ico" rel="icon">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="/css/dashboard.css">
+	<title>Limra Infracon | www.limrainfracon.com</title>
+</head>
+<body >
+	<section id="hero">
+	   <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+	<!-- SIDEBAR -->
+	<p th:replace="sidebar :: sidebar"></p>		
+	<!-- SIDEBAR -->
+	<!-- CONTENT -->
+	<section id="content" style="margin-top: -20px;">
+		<!-- NAVBAR -->
+		<p th:replace="header :: header"></p>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			
+			<ul class="box-info">
+				<li>
+					<i class='bx bxs-calendar-check' ></i>
+					<span class="text">
+						<h3>0</h3>
+						<p>Buy PLot</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-group' ></i>
+					<span class="text">
+						<h3>₹0</h3>
+						<p>Limra Wallet</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-dollar-circle' ></i>
+					<span class="text">
+						<h3>₹0</h3>
+						<p>Total Earnings</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-dollar-circle' ></i>
+					<span class="text">
+						<h3>₹0</h3>
+						<p>Total Sell</p>
+					</span>
+				</li>
+			</ul>
+
+
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Income Information</h3>
+						<i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>Type</th>
+								<th>Update Date</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<!--<img src="img/people.png">-->
+									<p>Level Income</p>
+								</td>
+								<td>01-10-2023</td>
+								<td><span class="status completed">0.00</span></td>
+							</tr>
+							<tr>
+								<td>
+									<!--<img src="img/people.png">-->
+									<p>Paid Installment</p>
+								</td>
+								<td>01-10-2023</td>
+								<td><span class="status pending">0.00</span></td>
+							</tr>
+							<tr>
+								<td>
+									<!--<img src="img/people.png">-->
+									<p>Remaining Installment</p>
+								</td>
+								<td>01-10-2023</td>
+								<td><span class="status process">0.00</span></td>
+							</tr>
+							<tr>
+								<td>
+									<!--<img src="img/people.png">-->
+									<p>Withdrawl</p>
+								</td>
+								<td>01-10-2023</td>
+								<td><span class="status pending">0.00</span></td>
+							</tr>
+							<tr>
+								<td>
+									<!--<img src="img/people.png">-->
+									<p>Direct Sale Bonus</p>
+								</td>
+								<td>01-10-2023</td>
+								<td><span class="status completed">0.00</span></td>
+							</tr>
+                            <tr>
+								<td>
+									<!--<img src="img/people.png">-->
+									<p>Incentive Bonus</p>
+								</td>
+								<td>01-10-2023</td>
+								<td><span class="status completed">0.00</span></td>
+							</tr>
+                            <tr>
+								<td>
+									<!--<img src="img/people.png">-->
+									<p>Team Profit Bonus</p>
+								</td>
+								<td>01-10-2023</td>
+								<td><span class="status completed">0.00</span></td>
+							</tr>
+                            <tr>
+								<td>
+									<!--<img src="img/people.png">-->
+									<p>Reward</p>
+								</td>
+								<td>01-10-2023</td>
+								<td><span class="status completed">0.00</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="todo">
+					<div class="head">
+						<h3>Profile Information</h3>
+						<i class='bx bx-plus' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<ul class="todo-list">
+						<li class="completed">
+							<p>Name : <span th:text="${user.name}"></span></p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="completed">
+							<p>Join Date: <span th:text="${#dates.format(user.createdDate, 'dd-MM-yyyy HH:mm')}"></span></p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="not-completed">
+							<p>Mobile No: <span th:text="${user.contactNumber}"></span></p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="completed">
+							<p>Email: <span th:text="${user.email}"></span></p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="not-completed">
+							<p>Refferal id : <span th:text="${user.referalId}"></span></p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+                        <li class="completed">
+							<p>Self Purchase : 0 </p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+		</section>
+	</section>
+	<!-- CONTENT -->
+	
+
+	<script src="/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="images/favicon.ico" rel="icon">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="/css/file-upload.css">
+	<!-- <link rel="stylesheet" href="/css/bootstrap.css"> -->
+	<title>Limra Infracon | www.limrainfracon.com</title>
+</head>
+<style>
+ #top-header{
+	position: relative;
+	width: calc(100% - 280px);
+	left: 280px;
+	transition: .3s ease;
+}
+</style>
+<body >
+	<section id="hero"><a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+	<!-- SIDEBAR -->
+	<div  class="sidebar" th:replace="sidebar :: sidebar"></div>
+	<section id="content" style="margin-top: -20px;">
+	<div th:replace="header :: header"></div>
+    <main>
+        <!-- <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary" style="margin-bottom: 10px;">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="form-header text-uppercase" style="background-color: darkgray;margin-right: -18px;margin-left: -18px;margin-top: -20px;padding: 8px;margin-bottom: 35px;">
+                                            <i class="fa fa-user-circle-o"></i>
+                                            <span class="btn-group float-sm-right pull-right"> Personal Photo</span>
+                                        </h4>
+                                        <form th:action="@{/user/saveImage}" method="POST" enctype="multipart/form-data">
+                                        <div class="form-group row">
+                                            <div class="col-md-8">
+                                                <div class="form-group row">
+                                                    <label for="input-1" class="col-sm-4 col-form-label">Upload Pic</label>
+                                                    <div class="col-sm-8">
+                                                    <input type="file" name="file" class="form-control mb-2" /> 
+                                                    <input type="file" name="ctl00$ContentPlaceHolder1$FilePersonalPic" id="ctl00_ContentPlaceHolder1_FilePersonalPic" class="form-control mb-2">
+
+                                                        <br><div style="color: red" th:if="${message != null}" th:text="${message}"></div>
+                                                        <input type="submit" value="Save" class="btn btn-primary "/> 
+                                                        <input type="submit" name="ctl00$ContentPlaceHolder1$btnSaveDP" value="SAVE" id="ctl00_ContentPlaceHolder1_btnSaveDP" class="btn btn-primary " fdprocessedid="ugcbnx">
+                                                        <br>
+                                                        <br>
+                                                        <h6 style="color: coral">
+                                                            <span id="ctl00_ContentPlaceHolder1_lblDp" th:text=${massage}></span></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+									         <div class="col-md-4" th:if="${filePath != null}">
+                                                    <img id="ctl00_ContentPlaceHolder1_ImagePersonalPic" th:src="@{${filePath}}" style="height:100px;width:100px;border-width:0px;"><br>
+                                                   </div>
+									         <div class="col-md-4" th:if="${filePath == null}">
+                                                <img id="ctl00_ContentPlaceHolder1_ImagePersonalPic" src="../images/images.png" style="height:100px;width:100px;border-width:0px;"><br>
+                                            </div>
+                                        </div>
+                                       </form> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+          </div>   -->    
+       
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="form-header text-uppercase" style="border-radius: 12px;background-color: darkgray;margin-right: -18px;margin-left: -18px;margin-top: -20px;padding: 8px;margin-bottom: 35px;">
+                                            <i class="fa fa-user-circle-o"></i>
+                                            Update KYC
+                                        </h4>
+                                         <form th:action="@{/user/saveFile}" method="POST" onsubmit="ValidateFile()" enctype="multipart/form-data">
+                                        <div class="form-group row ">
+                                            <div class="col-md-8">
+                                                <div class="form-group row">
+                                                    <label for="input-1" class="col-sm-4 col-form-label">Upload Aadhaar/PAN</label>
+                                                    <div class="col-sm-8">
+                                                        <!-- <input type="file" name="" id="" class="form-control"> -->
+														<input type="file" name="file" id="ctl00_ContentPlaceHolder1_File" class="form-control mb-2" required/> 
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="input-1" class="col-sm-4 col-form-label">Enter Id Number</label>
+                                                    <div class="col-sm-8">
+                                                        <input name="id_number" type="text" id="ctl00_ContentPlaceHolder1_txtAdhar" class="form-control mb-2" required>
+                                                        <br>
+                                                        <div th:if="${docfilePath != null}">
+                                                         <input type="submit" value="Save" class="btn btn-primary" disabled/>
+                                                        </div>
+                                                        <div th:if="${docfilePath == null}">
+                                                         <input type="submit" value="Save" class="btn btn-primary "/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                 <div class="col-md-4" th:if="${docfilePath != null}">
+                                                  <img id="ctl00_ContentPlaceHolder1_ImagePersonalPic" th:src="@{${docfilePath}}" style="height:100px;width:100px;border-width:0px;"><br>
+                                                 </div>
+										         <div class="col-md-4" th:if="${docfilePath == null}">
+	                                                <img id="ctl00_ContentPlaceHolder1_ImagePersonalPic" src="../images/images.png" style="height:100px;width:100px;border-width:0px;"><br>
+	                                            </div><br/>
+                                              <h6 style="color: coral;text-align: center;"><span id="ctl00_ContentPlaceHolder1_lbl" th:text=${msg}></span></h6>
+										  </div>
+										</form>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                             </div>
+						</div>
+                </main>
+         </section>
+       </section>
+	<script src="/js/dashboard.js"></script>
+	<script src="/js/jquery-3.5.1.js"></script>
+	 <script>
+        var validFilesTypes = ["bmp", "gif", "png", "jpg", "jpeg", "pdf"];
+        function ValidateFile() {
+            debugger;
+           /*  if (clicked_id == "ctl00_ContentPlaceHolder1_btnSaveDP") {
+                var file = document.getElementById("ctl00_ContentPlaceHolder1_FilePersonalPic");
+                var label = document.getElementById("ctl00_ContentPlaceHolder1_lblDp");
+                var path = file.value;
+            } */
+           
+                var file = document.getElementById("ctl00_ContentPlaceHolder1_File");
+                var label = document.getElementById("ctl00_ContentPlaceHolder1_lbl");
+                var path = file.value;
+            /* if (clicked_id == "ctl00_ContentPlaceHolder1_btnAdharCard") {
+                var file = document.getElementById("ctl00_ContentPlaceHolder1_fileAdharcard");
+                var label = document.getElementById("ctl00_ContentPlaceHolder1_lblAdhar");
+                var path = file.value;
+            } */
+            var ext = path.substring(path.lastIndexOf(".") + 1, path.length).toLowerCase();
+            var isValidFile = false;
+            for (var i = 0; i < validFilesTypes.length; i++) {
+                if (ext == validFilesTypes[i]) {
+                    isValidFile = true;
+                    break;
+                }
+            }
+            if (!isValidFile) {
+                label.style.color = "red";
+                label.innerHTML = "Invalid File. Please upload a File with" +
+                    " extension:\n\n" + validFilesTypes.join(", ");
+                //return false;
+            }
+            return isValidFile;
+        }
+    </script>
+	<script>
+	    $('#sidebar>ul>li').removeClass("active");
+        $('#sidebar>ul>li:nth-child(6)').addClass("active");
+    </script>
+</body>
+</html>

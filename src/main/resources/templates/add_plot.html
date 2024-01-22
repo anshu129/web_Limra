@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="images/favicon.ico" rel="icon">
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<title>Limra Infracon | www.limrainfracon.com</title>
+<link rel="stylesheet" href="/css/dashboard.css"> 
+<link rel="stylesheet" href="/css/add_plot.css">  
+</head>
+ <style>
+    .red-color {
+        color: red;
+    }
+    .placeholder{
+	    color: #65657b;
+	    font-family: sans-serif;
+	    left: 0px!important;
+	    line-height: 14px;
+	    pointer-events: none;
+	    position: absolute;
+	    transform-origin: 0 50%;
+	    transition: transform 200ms, color 200ms;
+	    top: 20px;
+    }
+    .input:not(:placeholder-shown) ~ .placeholder {
+    
+    	/* transform: translateY(-30px) translateX(10px) scale(0.75); */
+	}
+</style>
+<body>
+<section id="hero">
+	<a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+<!-- SIDEBAR -->
+<p th:replace="Admin_Sidebar :: Admin_Sidebar"></p>	
+<!-- SIDEBAR -->
+<!-- CONTENT -->
+<section id="content" style="margin-top: -20px;">
+	<!-- NAVBAR -->
+	<p th:replace="Admin_Navbar :: Admin_Navbar"></p>
+	<!-- NAVBAR -->
+<!-- CONTENT -->
+<main>
+<div class="container">
+<div class="form">
+<div class="title">Let's add Plot</div>
+<!-- <div class="subtitle"></div> -->
+     <div th:class="${message != null} ? 'red-color'">
+        <span th:text="${message}"></span>
+    </div>
+    <form action="#" th:action="@{/admin/addPlot}" th:object="${plot}" method="post">
+
+     <div class="input-container ic1">
+        <select class="input" th:field="*{project}" id="project">
+        <option value="0">--Select Project--</option>
+        <option th:each="project : ${projects}" th:value="${project.projectId}" th:text="${project.projectName}"></option>
+        </select>
+        <!-- <label for="project" class="placeholder"></label> -->
+        <select class="input" th:field="*{phase}" id="phase">
+        <option value="0">--Select Phase--</option>
+         <option th:each="project : ${projects}" th:value="${phase.phaseId}" th:text="${phase.phaseName}"></option>
+        </select>
+      </div>
+        
+         <div class="input-container ic2">
+	        <input class="input" type="text" th:field="*{plotNumber}" id="plotNumber" placeholder="Plot Number">
+	        <span style="color:red" th:if="${#fields.hasErrors('plotNumber')}" th:errors="*{plotNumber}">Plot Number Error</span>
+	        <input class="input" type="text" th:field="*{plotSize}" id="plotSize" placeholder="Plot Size">
+	        <span style="color:red" th:if="${#fields.hasErrors('plotSize')}" th:errors="*{plotSize}">Plot Size Error</span>
+	       
+        </div>
+         <div class="input-container ic2">
+	         <select class="input" th:field="*{plotType}">
+	          <option th:each="type : ${plotTypes}" th:value="${type}" th:text="${type.type}"></option>
+	        </select>
+	        <input class="input" type="text" th:field="*{plotRate}" id="plotRate" placeholder="Plot Rate">
+	        <span style="color:red" th:if="${#fields.hasErrors('plotRate')}" th:errors="*{plotRate}">Plot Size Error</span>
+       </div>
+         <div class="input-container ic2">
+	        <input class="input" type="text" th:field="*{zipCode}" id="zipCode" placeholder="Zip Code" />
+	         <select class="input" th:field="*{plotStatus}">
+	        <option th:each="status : ${plotStatuses}" th:value="${status}" th:text="${status.status}"></option>
+	        </select>
+        </div>
+        <input class="submit" type="submit" value="Submit">
+        </form>
+    </div>
+  </div>
+ </main>
+ </section>
+</section>    
+    
+ <script src="/js/dashboard.js"></script>   
+ <script type="text/javascript">
+ 
+ document.getElementById("project").addEventListener("change", function() {
+	    var projectId = this.value;
+	    if(projectId) {
+	        fetch("/admin/getPhases?projectId=" + projectId)
+	            .then(response => response.json())
+	            .then(data => {
+	                var phaseSelect = document.getElementById("phase");
+	                phaseSelect.innerHTML = '<option value="">---Select---</option>';
+	                data.forEach(function(phase) {
+	                    var option = document.createElement("option");
+	                    option.value = phase.phaseId;
+	                    option.text = phase.phaseName;
+	                    phaseSelect.appendChild(option);
+	                });
+	            })
+	            .catch(error => console.error("Error fetching phases:", error));
+	    }
+	});
+
+ </script>
+    
+    
+    
+    
+    
+</body>
+</html>

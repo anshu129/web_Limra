@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="/css/dashboard.css">
+	<!--  <link rel="stylesheet" href="/css/dataTables.css">-->
+	<title>Limra Infracon | www.limrainfracon.com</title>
+	<style>
+	
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .col-md-4{
+        padding:12px;
+        }
+        .big-button {
+    font-size: 1.5em;
+    padding: 10px 20px;
+  }
+        .cont{
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(238, 204, 204);
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            max-width: 200px;
+        }
+
+        .content {
+            margin-bottom: 20px;
+        }
+
+        .content h1 {
+            text-align: center;
+        }
+
+        .content p {
+            line-height: 1.5;
+        }
+
+        .line {
+            border-top: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background-color: #f4f4f4;
+            padding: 10px 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body >
+	<section id="hero">
+		  <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+	<!-- SIDEBAR -->
+	<!-- <section id="sidebar" style="background-color: rgba(11,45,61,0.9);">
+		<a href="#" class="brand">
+			<i class='bx bxs-ghost'></i>
+			<span class="text">Limra Infracon</span>
+		</a>
+		<ul class="side-menu top">
+			<li class="active">
+				<a href="#">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-wallet' ></i>
+					<span class="text">Master</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Customer</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bx-money' ></i>
+					<span class="text">Network</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Manage Payout</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Finance</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="#">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">Settings</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section> -->
+	<div th:replace="sidebar :: sidebar"></div>
+	<!-- SIDEBAR -->
+	<!-- CONTENT -->
+	<section id="content" style="margin-top: -20px;">
+		<!-- NAVBAR -->
+		<!-- <nav style="background-color: rgba(11,45,61,0.9);">
+			<i class='bx bx-menu' ></i>
+			<a href="#" class="nav-link" style="color: lightgoldenrodyellow;">Welcome <span th:text="${user.loginId}"></span></a>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="notification">
+				<i class='bx bxs-bell' style="color: white;"></i>
+				<span class="num">8</span>
+			</a>
+			<a href="#" class="profile">
+				<img src="/images/noimage.png">
+			</a>
+		</nav> -->
+		<div th:replace="header :: header"></div>
+		<!-- MAIN -->
+		<main>
+		<div class="cont">
+    <div class="container">
+        <div class="logo" style="background-color: #f4f4f4;">
+            <img src="/images/logo3.jpeg.png" alt="Logo">
+        </div>
+        <div class="content">
+            <div class="row">
+               <div class="col-md-4">
+                   <div class="form-group">
+                       <label for="exampleInputEmail1">Your Username</label>
+                       <input name="ctl00$ContentPlaceHolder1$txtLoginId" type="text" value="LD514904" readonly="readonly" id="ctl00_ContentPlaceHolder1_txtLoginId" disabled="disabled" class="form-control" aria-describedby="basic-addon1" /><br>
+                       <small id="Small1" class="form-text text-muted">You will be not able to change your username</small><br>
+                   </div>
+               </div>
+               <div class="col-md-4">
+                   <div class="form-group">
+                       <label for="exampleInputEmail1">First Name</label>
+                       <input name="ctl00$ContentPlaceHolder1$xtName" type="text" value="Sajid" id="ctl00_ContentPlaceHolder1_xtName" class="form-control" /><br>
+                       <small id="Small2" class="form-text text-muted">You will be not able to edit your First Name</small><br>
+                   </div>
+               </div>
+               <div class="col-md-4">
+                   <div class="form-group">
+                       <label for="exampleInputEmail1">Last Name</label>
+                       <input name="ctl00$ContentPlaceHolder1$txtLName" type="text" value="Khan" id="ctl00_ContentPlaceHolder1_txtLName" class="form-control" /><br>
+                       <small id="Small3" class="form-text text-muted">You will be not able to edit your Last Name</small><br>
+                   </div>
+               </div>
+           </div>
+
+           <div class="row">
+               <div class="col-md-4">
+                   <div class="form-group">
+                       <label for="exampleInputEmail1">Country</label>
+                       <select id="ctl00_ContentPlaceHolder1_ddlcountry" class="form-control">
+										<option value="219">-Select Country-</option>
+										<option value="1">Afghanistan</option>
+										<option value="2">Albania</option>
+										<option value="3">Algeria</option>
+										<option value="4">American Samoa</option>
+										<option value="5">Andorra</option>
+										<option value="6">Angola</option>
+										<option value="7">Anguilla</option>
+										<option value="8">Antigua and Barbuda</option>
+										<option value="9">Argentina</option>
+										<option value="10">Armenia</option>
+										<option value="11">Aruba</option>
+										<option value="12">Australia</option>
+										<option value="13">Austria</option>
+										<option value="14">Azerbaijan</option>
+										<option value="15">Bahamas</option>
+										<option value="16">Bahrain</option>
+										<option value="17">Bangladesh</option>
+										<option value="18">Barbados</option>
+										<option value="19">Belarus</option>
+										<option value="20">Belgium</option>
+										<option value="21">Belize</option>
+										<option value="22">Benin</option>
+										<option value="23">Bermuda</option>
+										<option value="24">Bhutan</option>
+										<option value="25">Bolivia</option>
+										<option value="26">Bosnia and Herzegovina</option>
+										<option value="27">Botswana</option>
+										<option value="28">Brazil</option>
+										<option value="29">British Indian Ocean Territory</option>
+										<option value="30">British Virgin Islands</option>
+										<option value="31">Brunei</option>
+										<option value="32">Bulgaria</option>
+										<option value="33">Burkina Faso</option>
+										<option value="34">Burma</option>
+										<option value="35">Burundi</option>
+										<option value="36">Cambodia</option>
+										<option value="37">Cameroon</option>
+										<option value="38">Canada</option>
+										<option value="39">Cape Verde</option>
+										<option value="40">Cayman Islands</option>
+										<option value="41">Central African Republic</option>
+										<option value="42">Chad</option>
+										<option value="43">Chile</option>
+										<option value="44">China</option>
+										<option value="45">Colombia</option>
+										<option value="46">Comoros</option>
+										<option value="47">Congo Democratic Republic</option>
+										<option value="48">Congo Republic</option>
+										<option value="49">Cook Islands</option>
+										<option value="50">Costa Rica</option>
+										<option value="51">Cote Divoire</option>
+										<option value="52">Croatia</option>
+										<option value="53">Cuba</option>
+										<option value="54">Cyprus</option>
+										<option value="55">Czech Republic</option>
+										<option value="56">Denmark</option>
+										<option value="57">Djibouti</option>
+										<option value="58">Dominica</option>
+										<option value="59">Dominican Republic</option>
+										<option value="60">East Timor</option>
+										<option value="61">Egypt</option>
+										<option value="62">El Salvador</option>
+										<option value="63">England</option>
+										<option value="64">Equador</option>
+										<option value="65">Equatorial Guinea</option>
+										<option value="66">Eritrea</option>
+										<option value="67">Estonia</option>
+										<option value="68">Ethiopia</option>
+										<option value="69">Falkland Islands</option>
+										<option value="70">Faroe Islands</option>
+										<option value="71">Fiji</option>
+										<option value="72">Finland</option>
+										<option value="73">France</option>
+										<option value="74">French Polynesia</option>
+										<option value="75">Gabon</option>
+										<option value="76">Gambia</option>
+										<option value="77">Georgia</option>
+										<option value="78">Germany</option>
+										<option value="79">Ghana</option>
+										<option value="80">Gibraltar</option>
+										<option value="81">Great Britain</option>
+										<option value="82">Greece</option>
+										<option value="83">Greenland</option>
+										<option value="84">Grenada</option>
+										<option value="85">Guam</option>
+										<option value="86">Guatemala</option>
+										<option value="87">Guernsey</option>
+										<option value="88">Guinea</option>
+										<option value="89">Guinea Bissau</option>
+										<option value="90">Guyana</option>
+										<option value="91">Haiti</option>
+										<option value="92">Honduras</option>
+										<option value="93">Hong Kong</option>
+										<option value="94">Hungary</option>
+										<option value="95">Iceland</option>
+										<option selected="selected" value="96">India</option>
+										<option value="97">Indonesia</option>
+										<option value="98">Iran</option>
+										<option value="99">Iraq</option>
+										<option value="100">Ireland</option>
+										<option value="101">Isle of Man</option>
+										<option value="102">Israel</option>
+										<option value="103">Italy</option>
+										<option value="104">Jamaica</option>
+										<option value="105">Japan</option>
+										<option value="106">Jersey</option>
+										<option value="107">Jordan</option>
+										<option value="108">Kazakhstan</option>
+										<option value="109">Kenya</option>
+										<option value="110">Kiribati</option>
+										<option value="111">Kuwait</option>
+										<option value="112">Kyrgyzstan</option>
+										<option value="113">Laos</option>
+										<option value="114">Latvia</option>
+										<option value="115">Lebanon</option>
+										<option value="116">Lesotho</option>
+										<option value="117">Liberia</option>
+										<option value="118">Libya</option>
+										<option value="119">Liechtenstein</option>
+										<option value="120">Lithuania</option>
+										<option value="121">Luxembourg</option>
+										<option value="122">Macau</option>
+										<option value="123">Macedonia</option>
+										<option value="124">Madagascar</option>
+										<option value="125">Malawi</option>
+										<option value="126">Malaysia</option>
+										<option value="127">Maledives</option>
+										<option value="128">Mali</option>
+										<option value="129">Malta</option>
+										<option value="130">Marshall Islands</option>
+										<option value="131">Martinique</option>
+										<option value="132">Mauretania</option>
+										<option value="133">Mauritius</option>
+										<option value="134">Mexico</option>
+										<option value="135">Micronesia</option>
+										<option value="136">Moldova</option>
+										<option value="137">Monaco</option>
+										<option value="138">Mongolia</option>
+										<option value="139">Montserrat</option>
+										<option value="140">Morocco</option>
+										<option value="141">Mozambique</option>
+										<option value="142">Namibia</option>
+										<option value="143">Nauru</option>
+										<option value="144">Nepal</option>
+										<option value="145">Netherlands</option>
+										<option value="146">Netherlands Antilles</option>
+										<option value="147">New Zealand</option>
+										<option value="148">Nicaragua</option>
+										<option value="149">Niger</option>
+										<option value="150">Nigeria</option>
+										<option value="151">Niue</option>
+										<option value="152">Norfolk Island</option>
+										<option value="153">North Korea</option>
+										<option value="154">Northern Mariana Islands</option>
+										<option value="155">Norway</option>
+										<option value="156">Oman</option>
+										<option value="235">Others</option>
+										<option value="157">Pakistan</option>
+										<option value="158">Palau</option>
+										<option value="159">Panama</option>
+										<option value="160">Papua New Guinea</option>
+										<option value="161">Paraquay</option>
+										<option value="162">Peru</option>
+										<option value="163">Philippines</option>
+										<option value="164">Pitcairn Islands</option>
+										<option value="165">Poland</option>
+										<option value="166">Portugal</option>
+										<option value="167">Puerto Rico</option>
+										<option value="168">Qatar</option>
+										<option value="169">Romania</option>
+										<option value="170">Russia</option>
+										<option value="171">Rwanda</option>
+										<option value="172">Saint Helena</option>
+										<option value="173">Saint Kitts and Nevis</option>
+										<option value="174">Saint Lucia</option>
+										<option value="175">Saint Pierre and Miquelon</option>
+										<option value="176">Saint Vincent and the Grenadines</option>
+										<option value="177">Samoa</option>
+										<option value="178">San Marino</option>
+										<option value="179">Sao Tome and Principe</option>
+										<option value="180">Saudi Arabia</option>
+										<option value="181">Scotland</option>
+										<option value="182">Senegal</option>
+										<option value="183">Serbia Montenegro</option>
+										<option value="184">Seychelles</option>
+										<option value="185">Sierra Leone</option>
+										<option value="186">Singapore</option>
+										<option value="187">Slovakia</option>
+										<option value="188">Slovenia</option>
+										<option value="189">Solomon Islands</option>
+										<option value="190">Somalia</option>
+										<option value="191">South Africa</option>
+										<option value="192">South Georgia</option>
+										<option value="193">South Korea</option>
+										<option value="194">Spain</option>
+										<option value="195">Sri Lanka</option>
+										<option value="196">Sudan</option>
+										<option value="197">Suriname</option>
+										<option value="198">Swaziland</option>
+										<option value="199">Sweden</option>
+										<option value="200">Switzerland</option>
+										<option value="201">Syria</option>
+										<option value="202">Taiwan</option>
+										<option value="203">Tajikistan</option>
+										<option value="204">Tanzania</option>
+										<option value="205">Thailand</option>
+										<option value="206">Tibet</option>
+										<option value="207">Togo</option>
+										<option value="208">Tonga</option>
+										<option value="209">Trinidad and Tobago</option>
+										<option value="210">Tunisia</option>
+										<option value="211">Turkey</option>
+										<option value="212">Turkmenistan</option>
+										<option value="213">Turks and Caicos Islands</option>
+										<option value="214">Tuvalu</option>
+										<option value="215">Uganda</option>
+										<option value="231">UK</option>
+										<option value="216">Ukraine</option>
+										<option value="217">United Arab Emirates</option>
+										<option value="218">Uruquay</option>
+										<option value="219">USA</option>
+										<option value="220">Uzbekistan</option>
+										<option value="221">Vanuatu</option>
+										<option value="222">Vatican City</option>
+										<option value="223">Venezuela</option>
+										<option value="224">Vietnam</option>
+										<option value="225">Virgin Islands</option>
+										<option value="226">Wales</option>
+										<option value="227">Wallis and Futuna</option>
+										<option value="228">Yemen</option>
+										<option value="229">Zambia</option>
+										<option value="230">Zimbabwe</option>
+									</select><br>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email Address</label>
+                                        <input name="ctl00$ContentPlaceHolder1$txtEmailId" type="text" value="sajidchauhan93@gmail.com" id="ctl00_ContentPlaceHolder1_txtEmailId" onkeyup="javascript:return validateemail(this);" class="form-control" />
+                                        <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator2" style="color:Red;visibility:hidden;">*</span><br>
+                                        <small id="Small8" class="form-text text-muted">You will be not able to edit your email address here.</small><br>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Contact Number</label>
+                                        <!--<input name="ctl00$ContentPlaceHolder1$txtccode" type="text" id="ctl00_ContentPlaceHolder1_txtccode" title="Country Code" placeholder="Country Code" style="width:20%;" />--->
+                                        <input name="ctl00$ContentPlaceHolder1$txtMobile" type="text" value="9528586506" maxlength="20" id="ctl00_ContentPlaceHolder1_txtMobile" class="form-control" /><br>
+                                        <small id="Small6" class="form-text text-muted">You will be not able to edit your contact number</small><br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">USDT TRC20 Address</label>
+                                        <input name="ctl00$ContentPlaceHolder1$txtaddCoinAddress" type="text" maxlength="50" id="ctl00_ContentPlaceHolder1_txtaddCoinAddress" class="form-control" /><br>
+                                        <small id="Small9" class="form-text text-muted">We'll never share your USDT TRC20 Wallet Address with anyone else.</small><br>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Address</label>
+                                        <textarea name="ctl00$ContentPlaceHolder1$txtAddress" rows="2" cols="20" id="ctl00_ContentPlaceHolder1_txtAddress" class="form-control"></textarea><br>
+                                        <small id="Small5" class="form-text text-muted">Update your residential or official address</small>
+                                    </div>
+                                </div>
+                            </div>
+			       		 </div>
+			       	 <div class="footer">
+			      © 2023 Your Company. All rights reserved.
+			    </div>
+			 </div>
+		</div>
+		</main>
+		</section>
+	</section>
+	<!-- CONTENT -->
+	<script src="/js/dashboard.js"></script>
+	<script src="/js/jquery-3.5.1.js"></script>
+	<script>
+	    $('#sidebar>ul>li').removeClass("active");
+        $('#sidebar>ul>li:nth-child(6)').addClass("active");
+    </script>
+</body>
+</html>

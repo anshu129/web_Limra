@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="images/favicon.ico" rel="icon">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="/css/dashboard.css">
+	<title>Limra Infracon | www.limrainfracon.com</title>
+</head>
+<body >
+	<section id="hero">
+	   <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+	<!-- SIDEBAR -->
+	<p th:replace="sidebar :: sidebar"></p>		
+	<!-- SIDEBAR -->
+	<!-- CONTENT -->
+	<section id="content" style="margin-top: -20px;">
+		<!-- NAVBAR -->
+		<p th:replace="header :: header"></p>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="table-data">
+				<div class="todo">
+					<div class="head">
+						<h3>Profile Information</h3>
+						<i class='bx bx-plus' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<ul class="todo-list">
+						<li class="completed">
+							<p>Name : <input th:text="${user.name}" /></p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="completed">
+							<p>Join Date: <input th:text="${#dates.format(user.createdDate, 'dd-MM-yyyy HH:mm')}" /></p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="not-completed">
+							<p>Mobile No: <input th:text="${user.contactNumber}" /></p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="completed">
+							<p>Email: <input th:text="${user.email}" /></p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="not-completed">
+							<p>Refferal id : <input th:text="${user.referalId}" /></p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+                       
+					</ul>
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+		</section>
+	</section>
+	<!-- CONTENT -->
+	
+
+	<script src="/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="images/favicon.ico" rel="icon">
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<title>Limra Infracon | www.limrainfracon.com</title>
+<link rel="stylesheet" href="/css/dashboard.css">
+<link rel="stylesheet" href="/css/add_plot.css">     
+</head>
+<body>
+<section id="hero">
+	<a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+<!-- SIDEBAR -->
+<p th:replace="Admin_Sidebar :: Admin_Sidebar"></p>	
+<!-- SIDEBAR -->
+<!-- CONTENT -->
+<section id="content" style="margin-top: -20px;">
+	<!-- NAVBAR -->
+	<p th:replace="Admin_Navbar :: Admin_Navbar"></p>
+	<!-- NAVBAR -->
+<!-- CONTENT -->
+<main>
+<div class="form" style="overflow: scroll;">
+<div class="title">Let's add Phase</div>
+<!-- <div class="subtitle"></div> -->
+ <div th:class="${message != null} ? 'red-color'">
+        <span th:text="${message}"></span>
+    </div>
+    
+    <form action="#" th:action="@{/admin/addPhase}" th:object="${phase}" method="post">
+        
+         <div class="input-container ic1">
+        <select class="input" th:field="*{project}" id="project">
+        	<option value="0">--Select Project--</option>
+            <option th:each="project : ${projects}" th:value="${project.projectId}" th:text="${project.projectName}"></option>
+        </select>
+         <input class="input" type="text" th:field="*{phaseName}" placeholder="Phase Name" id="phaseName">
+        <span style="color:red" th:if="${#fields.hasErrors('phaseName')}" th:errors="*{phaseName}">Phase Name Error</span>
+        </div>
+   
+         <div class="input-container ic2">
+           <input class="input" type="text" th:field="*{numberOfPlots}" placeholder="number of plots" id="numberOfPlots">
+          <span style="color:red" th:if="${#fields.hasErrors('numberOfPlots')}" th:errors="*{numberOfPlots}">Number of Plot Error</span>
+           <input class="input" type="date" th:field="*{startDate}" placeholder="Start Date" id="startDate">
+        </div>
+        
+         <div class="input-container ic2">
+          <input class="input" type="date" th:field="*{endDate}" placeholder="End Date" id="endDate">
+        </div>
+        
+          <div class="input-container ic2" style=" display: grid; justify-content: start;">
+          <input  type="checkbox" th:field="*{isPhaseActive}" id="isPhaseActive">
+          <label for="isphaseactive" class="placeholder">is phase active</label>
+         </div>
+        <button class="submit" type="submit">Add Phase</button>
+    </form>
+    </div>
+   </main>
+   </section>
+   </section>
+<script src="/js/dashboard.js"></script>   
+</body>
+</html>

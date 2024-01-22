@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .cont{
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(238, 204, 204);
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            max-width: 200px;
+        }
+
+        .content {
+            margin-bottom: 20px;
+        }
+
+        .content h1 {
+            text-align: center;
+        }
+
+        .content p {
+            line-height: 1.5;
+        }
+
+        .line {
+            border-top: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background-color: #f4f4f4;
+            padding: 10px 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cont">
+    <div class="container">
+        <div class="logo" style="background-color: #f4f4f4;">
+           <img src="http://www.limrainfracon.com/images/logo3.jpeg.png" alt="Media Resource" class="img-fluid">
+        </div>
+        <div class="content">
+            <h5><span>Email From : </span><span th:text="${emailReq.name}"></span></h5>
+            <h5><span>Email Id : </span><span th:text="${emailReq.email}"></span></h5>
+            <h5><span>Email Subject : </span><span th:text="${emailReq.emailSubject}"></span></h5>
+            <div class="line"></div>
+            <p><span th:text="${emailReq.emailBody}"></span></p>
+        </div>
+        <div class="footer">
+      &copy; 2023 <a href="http://www.limrainfracon.com" style="text-decoration:none;"><span style="color:red;text-decoration:none;">Limra Infracon</span></a>. All rights reserved.
+    </div>
+    </div>
+    </div>
+</body>
+</html>

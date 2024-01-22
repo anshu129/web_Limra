@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="images/favicon.ico" rel="icon">
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<title>Limra Infracon | www.limrainfracon.com</title>
+<link rel="stylesheet" href="/css/dashboard.css"> 
+<link rel="stylesheet" href="/css/add_plot.css"> 
+</head>
+ <style>
+    .valid-seller::after {
+        content: '\2713'; 
+        color: green;
+    }
+
+    .invalid-seller::after {
+        content: '\2717'; 
+        color: red;
+    }
+</style>
+<body>
+<section id="hero">
+	<a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+<!-- SIDEBAR -->
+<p th:replace="Admin_Sidebar :: Admin_Sidebar"></p>	
+<!-- SIDEBAR -->
+<!-- CONTENT -->
+<section id="content" style="margin-top: -20px;">
+	<!-- NAVBAR -->
+	<p th:replace="Admin_Navbar :: Admin_Navbar"></p>
+	<!-- NAVBAR -->
+<!-- CONTENT -->
+<main>
+<div class="container">
+<div class="form">
+<div class="title">Plot Sale Form</div>
+<!-- <div class="subtitle">Plot Sale</div> -->
+  <div th:class="${message != null} ? 'red-color'">
+        <span th:text="${message}"></span>
+    </div>
+	<form action="#" th:action="@{/admin/addPlotSale}" th:object="${plotSale}"
+		method="post">
+		<div class="input-container ic1">
+			<select class="input" th:field="*{projectName}" name="projectName">
+				<option value="0">--Project Name--</option>
+				<option th:each="project : ${projects}" th:value="${project.projectId}"
+					th:text="${project.projectName}"></option>
+			</select>
+		 	<span style="color:red" th:if="${#fields.hasErrors('projectName')}" th:errors="*{projectName}">Project Name Error</span>
+			
+			<select class="input" id="phaseDropDown"	th:field="*{phase}" name="phaseName" onchange="getPlots()">
+				<option value="0">--Project Phase--</option>
+			</select>
+	    	<span style="color:red" th:if="${#fields.hasErrors('phase')}" th:errors="*{phase}">Project Name Error</span>
+		</div>
+
+		<div class="input-container ic2">
+			<select id="plotsDropDown" class="input" th:field="*{plot}" name="plotNumber" onchange="getPlotDetails()">
+			<option value="0">--Plot Number--</option>
+				<!-- Plot options will be populated using AJAX -->
+			</select>
+		 	<span style="color:red" th:if="${#fields.hasErrors('plot')}" th:errors="*{plot}">Plot Number Error</span>
+			
+			<input type="text" class="input" id="plotSize" th:field="*{plotSize}" placeholder="Plot Size" />
+			 <span style="color:red" th:if="${#fields.hasErrors('plotSize')}" th:errors="*{plotSize}">Plot Size Error</span>
+		
+		</div>
+
+
+		<div class="input-container ic2">
+			<input type="text" class="input" id="plotRate" th:field="*{plotRate}"  placeholder="Plot Rate"/>
+			 <span style="color:red" th:if="${#fields.hasErrors('plotRate')}" th:errors="*{plotRate}">Plot Rate Error</span>
+		
+			<input type="text" class="input" id="clientPhoneNumber" th:field="*{clientPhoneNumber}" placeholder="Client Mobile Numer" />
+			<span style="color:red" th:if="${#fields.hasErrors('clientPhoneNumber')}" th:errors="*{clientPhoneNumber}">Client Phone Number Error</span>
+		
+		</div>
+		
+		<div class="input-container ic2">
+			<input type="text" class="input" id="clientName" th:field="*{clientName}" placeholder="Client Name" />
+			<span style="color:red" th:if="${#fields.hasErrors('clientName')}" th:errors="*{clientName}">Client Name Error</span>
+			<input type="email" class="input" id="clientEmail" th:field="*{clientEmail}" placeholder="Client Email" />
+			<span style="color:red" th:if="${#fields.hasErrors('clientEmail')}" th:errors="*{clientEmail}">Client Email Error</span>
+		</div>
+		<div class="input-container ic2" id="sellerIdDiv">
+			<input type="text" class="input" id="sellerId" th:field="*{sellerId}" placeholder="Seller ID" />
+			<button type="button" id="checkSellerButton">Check Seller</button>
+			<input type="checkbox" id="sellerIdCheckBox" th:field="*{sellerIdCheckBox}" style="display: none;" />
+		</div>
+
+		<button class="submit" type="submit">Submit</button>
+	</form>
+</div>
+</div>
+</main>
+</section>
+</section>
+	<script src="/js/jquery.min.js"></script>
+	 <script src="/js/dashboard.js"></script>  
+<script>
+    $(document).ready(function() {
+        var phasesData; 
+		var plotsData; 
+        $("select[name='projectName']").change(function() {
+            var selectedProject = $(this).val();
+            $.get("/admin/getPhases?projectId=" + selectedProject, function(data) {
+                phasesData = data; 
+                var phaseDropDown = $("#phaseDropDown");
+                phaseDropDown.empty();
+                phaseDropDown.append('<option value="">---Select---</option>'); 
+                $.each(data, function(index, value) {
+                	phaseDropDown.append('<option value="' + value.phaseId + '">' + value.phaseName + '</option>');
+                });
+            });
+        }); 
+
+        
+        $('#checkSellerButton').click(function(e) {
+            e.preventDefault(); 
+
+            var sellerId = $('#sellerId').val();
+            $.get("/user/find-seller-by-id/" + sellerId, function(response) {
+                console.log(response); 
+                if (response.exists) {
+                    $('#sellerIdDiv').removeClass('invalid-seller').addClass('valid-seller');
+                    $('#sellerIdCheckBox').prop('checked', true); // set checkbox to checked
+                } else {
+                    $('#sellerIdDiv').removeClass('valid-seller').addClass('invalid-seller');
+                    $('#sellerIdCheckBox').prop('checked', false); // set checkbox to unchecked
+                }
+            }).fail(function(jqXHR, textStatus, errorThrown) {
+              
+                console.error("Request failed: ", textStatus, errorThrown);
+            });
+        });
+    });
+    
+
+    function getPlots() {
+        var selectedPhase = document.getElementById("phaseDropDown").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', "/admin/getPlots?phaseId=" + selectedPhase, true);
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 400) {
+                var data = JSON.parse(xhr.responseText);
+                var plotsDropDown = document.getElementById("plotsDropDown");
+                plotsDropDown.innerHTML = '<option value="">---Select---</option>'; 
+                for (var i = 0; i < data.length; i++) {
+                    var option = document.createElement("option");
+                    option.value = data[i].plotId;
+                    option.text = data[i].plotNumber;
+                    plotsDropDown.appendChild(option);
+                }
+            } else {
+                console.error('Server returned an error');
+            }
+        };
+        xhr.onerror = function() {
+            console.error('Error in sending request');
+        };
+        xhr.send();
+    }
+    
+ 
+    	 function getPlotDetails() {
+    	        var selectedPlotId = document.getElementById("plotsDropDown").value;
+    	        var xhr = new XMLHttpRequest();
+    	        xhr.open('GET', "/admin/getPlotDetails?plotId=" + selectedPlotId, true);
+    	        xhr.onload = function () {
+    	            if (xhr.status >= 200 && xhr.status < 400) {
+    	                var plotData = JSON.parse(xhr.responseText);
+    	                document.getElementById("plotSize").value = plotData.plotSize || "";
+    	                document.getElementById("plotRate").value = plotData.plotRate || "";
+    	            } else {
+    	                console.error('Server returned an error');
+    	            }
+    	        };
+    	        xhr.onerror = function() {
+    	            console.error('Error in sending request');
+    	        };
+    	        xhr.send();
+    	    }
+   
+</script>
+
+</body>
+</html>

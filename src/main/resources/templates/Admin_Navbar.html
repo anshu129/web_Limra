@@ -1,0 +1,82 @@
+<nav th:fragment="Admin_Navbar" style="background-color: rgba(11,45,61,0.9);">
+<style>
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-left: -125px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+</style>
+<i class='bx bx-menu' ></i>
+<a href="#" class="nav-link" style="color: lightgoldenrodyellow;">Welcome <span th:text="${user.name}"></span><span>(</span><span th:text="${user.loginId}"></span><span>)</span></a>
+<form action="#">
+	<div class="form-input">
+		<input type="search" placeholder="Search...">
+		<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+	</div>
+</form>
+<input type="checkbox" id="switch-mode" hidden>
+<label for="switch-mode" class="switch-mode"></label>
+<a href="#" class="notification">
+	<i class='bx bxs-bell' style="color: white;"></i>
+	<span class="num">0</span>
+</a>
+<div class="dropdown">
+	<a href="#" onclick="myFunction()" class="profile">
+		<img src="/images/noimage.png">
+	</a>
+	<ul id="myDropdown" class="dropdown-content">
+    <li><a class="dropdown-item" href="#"> <i class="fas fa-user-alt pe-2"></i>My Profile</a></li>
+    <li><a class="dropdown-item" href="#"> <i class="fas fa-cog pe-2"></i>Change password</a></li>
+    <li>
+    <form id="logoutForm" th:action="@{/logout}" method="post" style="display: none;"></form> 
+		<a href="#" onclick="document.getElementById('logoutForm').submit(); return false;" class="logout"> 
+			<i class='bx bxs-log-out-circle'></i> 
+			<span class="text">Logout</span>
+		</a></li>
+    </ul>
+   </div> <script>
+function myFunction() {
+	//debugger;
+	  document.getElementById("myDropdown").classList.toggle("show");
+	}
+</script>
+</nav>

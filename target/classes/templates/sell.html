@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="images/favicon.ico" rel="icon">
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="/css/dashboard.css">
+	<title>Limra Infracon | www.limrainfracon.com</title>
+	<style>
+	.container {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: white;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .form-title {
+      text-align: center;
+    }
+
+    .form-wrapper {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-label {
+      display: block;
+      margin-top: 10px;
+      
+    }
+
+    .form-input1 {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .form-submit {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .form-submit:hover {
+      background-color: #45a049;
+    }
+   
+  </style>
+</head>
+<body >
+	<section id="hero">
+		  <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+	<!-- SIDEBAR -->
+	<div th:replace="sidebar :: sidebar"></div>
+	<!-- SIDEBAR -->
+	<!-- CONTENT -->
+	<section id="content" style="margin-top: -20px;">
+		<!-- NAVBAR -->
+		<div th:replace="header :: header"></div>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+		<div class="container">
+    <h1 class="form-title">Property Sale Form</h1>
+    <form class="form-wrapper" action="/submit_property" method="post">
+      <label class="form-label" for="property_type">Project name:</label>
+      <select class="form-input1" id="property_type" name="property_type" required>
+        <option value="house">House</option>
+        <option value="apartment">Apartment</option>
+        <option value="condo">Condo</option>
+        <option value="land">Land</option>
+      </select>
+
+      <label class="form-label" for="address">Plot no.</label>
+      <input class="form-input1" type="text" id="address" name="address" required>
+
+      <label class="form-label" for="city">Plot size:</label>
+      <input class="form-input1" type="text" id="city" name="city" required>
+
+      <label class="form-label" for="state">Plot Rate:</label>
+      <input class="form-input1" type="text" id="state" name="state" required>
+
+      <label class="form-label" for="zip_code">ZIP Code:</label>
+      <input class="form-input1" type="text" id="zip_code" name="zip_code" required>
+
+      <label class="form-label" for="price">Plot Price:</label>
+      <input class="form-input1" type="text" id="price" name="price" required>
+
+      <label class="form-label" for="description">Description:</label>
+      <textarea class="form-input1" id="description" name="description" rows="4" required></textarea>
+
+      <label class="form-label" for="contact_name">Client name:</label>
+      <input class="form-input1" type="text" id="contact_name" name="contact_name" required>
+
+      <label class="form-label" for="contact_email">Email:</label>
+      <input class="form-input1" type="email" id="contact_email" name="contact_email" required>
+
+      <label class="form-label" for="contact_phone">Phone:</label>
+      <input class="form-input1" type="tel" id="contact_phone" name="contact_phone" required>
+
+      <input class="form-submit" type="submit" value="Submit">
+    </form>
+  </div>
+			</main>
+		<!-- MAIN -->
+		</section>
+	</section>
+	<!-- CONTENT -->
+	
+
+	<script src="/js/dashboard.js"></script>
+	<script src="/js/jquery-3.5.1.js"></script>
+	<script>
+	    $('#sidebar>ul>li').removeClass("active");
+        $('#sidebar>ul>li:nth-child(4)').addClass("active");
+    </script>
+</body>
+</html>

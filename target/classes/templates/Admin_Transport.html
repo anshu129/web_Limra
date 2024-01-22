@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="images/favicon.ico" rel="icon">
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<title>Limra Infracon | www.limrainfracon.com</title>
+<link rel="stylesheet" href="/css/dashboard.css"> 
+<link rel="stylesheet" href="/css/transport_table.css"> 
+</head>
+<style>
+
+</style>
+<body>
+<section id="hero">
+	<a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+<!-- SIDEBAR -->
+<p th:replace="Admin_Sidebar :: Admin_Sidebar"></p>	
+<!-- SIDEBAR -->
+<!-- CONTENT -->
+<section id="content" style="margin-top: -20px;">
+	<!-- NAVBAR -->
+	<p th:replace="Admin_Navbar :: Admin_Navbar"></p>
+	<!-- NAVBAR -->
+<!-- CONTENT -->
+<main>
+<div class="">
+
+<div id="DataTable">
+<div id="table_box_bootstrap">
+</div>
+<table class="">
+ <thead>
+ <tr>
+ <th>Ass.name</th>
+ <th>Visitor slip</th>
+ <th>FLC num</th>
+ <th>Ass FLC num</th>
+ <th>Driver name</th>
+ <th>Car Modal</th>
+ <th>Regis. num</th>
+ <th>Visit date</th>
+ <th>Status</th>
+ <th>Action</th>
+ <th>Clients</th>
+ </tr>
+ </thead>
+ <tbody class="scroll-pane">
+ <tr th:each="details : ${transportDetails}">
+  <td><span th:text="${details.associateName}"></span></td>
+ <td><span th:text="${details.visitorSlip}"></span></td>
+ <td><span th:text="${details.flcNumber}"></span></td>
+ <td><span th:text="${details.associateFlcNo}"></span></td>
+ <td><span th:text="${details.driverName}"></span></td>
+ <td><span th:text="${details.carModel}"></span></td>
+ <td><span th:text="${details.carRegistration}"></span></td>
+ <td><span th:text="${#dates.format(details.visiteDate, 'dd-MM-yyyy')}"></span> <span th:text="${details.time}"></span></td>
+ <td><span th:text="${details.status}"></span></td>
+ <td><a href="#" th:attr="onclick=|uploadStatus('${details.transportId}', 'ACCEPTED')|" ><i style="font-size:30px;color:green;" class='bx bxs-check-circle'></i></a>
+ <a href="#" class="reject-btn" th:attr="onclick=|uploadStatus('${details.transportId}', 'REJECTED')|" ><i style="font-size:30px;color:red;" class='bx bxs-x-circle'></i></a></td>
+ <td style="text-align:center;" onclick="collapseClientDiv()"><a href="#"><span id="plus" class="collapseplus"><b>+</b></span> <span id="minus" class="collapseminus"><b>-</b></span></a></td>
+     <!--  <tr th:each="client : ${details.transportClients}">
+	 <td>Name : <span th:text="${client.name}"></span></td>
+	 <td>Mobile Number : <span th:text="${client.mobileNumber}"></span></td>
+	 <td>Pickup Location : <span th:text="${client.location}"></span></td>
+ 	</tr> -->
+ </tr>
+ </tbody>
+</table>
+</div>
+</div>
+</main>
+</section>
+</section>
+</body>
+<script src="/js/jquery_3.6.4_jquery.min.js"></script>
+<script src="/js/dashboard.js"></script>
+<script src="/js/transport_table.js"></script>
+	<script>
+	    $('#sidebar>ul>li').removeClass("active");
+        $('#sidebar>ul>li:nth-child(8)').addClass("active");
+    </script>
+<script>
+$(document).ready(function(){
+	
+});
+
+
+function collapseClientDiv(){
+	//var element = document.getElementById("plus");
+	if($("#plus").css('display') == 'inline'){
+		$("#collapseTwo").show();
+		$("#minus").show();
+		$("#plus").hide();
+	}else if($("#minus").css('display') == 'inline'){
+		$("#collapseTwo").hide();
+		$("#plus").show();
+		$("#minus").hide();
+	}else{
+		$("#collapseTwo").show();
+		$("#collapseminus").show();
+		$("#collapseplus").hide();
+	}	
+}
+
+function uploadStatus(id, status){
+	  data ={};
+	  data["id"]=id;
+	  data["Status"]=status;
+     
+    $.ajax({
+  	  url:"/admin/updateTransportStatus",
+  	  type:"POST",
+  	  data: data,
+  	  async:false,
+  	  headers: {
+  	      'X-CSRF-TOKEN': $("meta[name='_csrf']").attr("content")
+  	  },
+  	  success: function(data){
+  	      console.log("success");
+  	      alert(data);
+  	      location.reload();
+  	      
+  	  },error:function(data){
+  	      console.log("error");
+  	      alert(data);
+  	  }
+  	});
+}
+</script>
+</html>

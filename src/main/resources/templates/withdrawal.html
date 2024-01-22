@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="images/favicon.ico" rel="icon">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="/css/dashboard.css">
+	<title>Limra Infracon | www.limrainfracon.com</title>
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+	        .big-button {
+		    font-size: 1.5em;
+		    padding: 10px 20px;
+	 	 }
+	      .cont{
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(238, 204, 204);
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            max-width: 200px;
+        }
+
+        .content {
+            margin-bottom: 20px;
+        }
+
+        .content h1 {
+            text-align: center;
+        }
+
+        .content p {
+            line-height: 1.5;
+        }
+
+        .line {
+            border-top: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background-color: #f4f4f4;
+            padding: 10px 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body >
+	<section id="hero">
+	<a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+	<!-- SIDEBAR -->
+	<div th:replace="sidebar :: sidebar"></div>
+	<!-- SIDEBAR -->
+	<!-- CONTENT -->
+	<section id="content" style="margin-top: -20px;">
+	<div th:replace="header :: header"></div>
+		<!-- NAVBAR -->
+		<!-- MAIN -->
+	<main>
+	<div class="cont">
+    <div class="container">
+        <div class="logo" style="background-color: #f4f4f4;">
+            <img src="/images/logo3.jpeg.png" alt="Logo">
+        </div>
+        <div class="content">
+   <form>
+  <label for="withdrawal">Fund Withdraw:</label><br>
+  <input type="text" class="form-control" required><br>
+
+  <p style="color:red;">Minimum withdrawal amount must be Rs 50.</p><br>
+
+  <label for="password">Account Number:</label><br>
+  <input type="number" class="form-control" required><br>
+<label for="password">IFSC Code</label><br>
+  <input type="text" class="form-control" required><br>
+<label for="password">Enter PIN:</label><br>
+  <input type="number" class="form-control" required><br>
+  <input type="submit" class="big-button" style="
+    margin: 32px;
+    margin-left: 227px;
+    margin-right: auto;
+    background-color: #3C91E6;"
+ value="Submit">
+</form>
+        </div>
+        <div class="footer">
+      &copy; 2023 Your Company. All rights reserved.
+    </div>
+    </div>
+    </div>
+   </main>
+  </section>
+</section>
+	<!-- CONTENT -->
+	
+
+	<script src="/js/dashboard.js"></script>
+	<script src="/js/jquery-3.5.1.js"></script>
+	<script>
+	    $('#sidebar>ul>li:nth-child(1)').removeClass("active");
+        $('#sidebar>ul>li:nth-child(2)').addClass("active");
+    </script>
+</body>
+</html>

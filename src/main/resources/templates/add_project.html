@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="images/favicon.ico" rel="icon">
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<title>Limra Infracon | www.limrainfracon.com</title>
+<link rel="stylesheet" href="/css/dashboard.css"> 
+<link rel="stylesheet" href="/css/add_plot.css">      
+</head>
+ <style>
+    .red-color {
+        color: red;
+    }
+</style>
+<body>
+<section id="hero">
+	<a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+<!-- SIDEBAR -->
+<p th:replace="Admin_Sidebar :: Admin_Sidebar"></p>	
+<!-- SIDEBAR -->
+<!-- CONTENT -->
+<section id="content" style="margin-top: -20px;">
+	<!-- NAVBAR -->
+	<p th:replace="Admin_Navbar :: Admin_Navbar"></p>
+	<!-- NAVBAR -->
+<!-- CONTENT -->
+<main>
+<div class="container">
+<div class="form" style="overflow: scroll;">
+<div class="title">Let's add Project</div>
+<!-- <div class="subtitle"></div> -->
+     <div th:class="${message != null} ? 'red-color'">
+        <span th:text="${message}"></span>
+    </div>
+    
+    <form action="#" th:action="@{/admin/addProject}" th:object="${project}" method="post">
+    
+        <div class="input-container ic1">
+        <!-- <label for="projectName" class="placeholder">Project Name:</label> -->
+        <input type="text" class="input" th:field="*{projectName}" id="projectName"  placeholder="Project name">
+        <span style="color:red" th:if="${#fields.hasErrors('projectName')}" th:errors="*{projectName}">Project Name Error</span>
+         <input type="text" class="input" th:field="*{projectState}" id="projectState"  placeholder="State">
+        <span style="color:red" th:if="${#fields.hasErrors('projectState')}" th:errors="*{projectState}">Project State Error</span>
+        </div>
+        <div class="input-container ic2">
+        <input type="text" class="input" th:field="*{projectCity}" id="projectCity"  placeholder="City">
+        <span style="color:red" th:if="${#fields.hasErrors('projectCity')}" th:errors="*{projectCity}">Project State Error</span>
+        <input type="date" class="input" th:field="*{projectStartDate}" id="projectStartDate" placeholder="dd-MM-yyyy">
+         <span style="color:red" th:if="${#fields.hasErrors('projectStartDate')}" th:errors="*{projectStartDate}">Project State Error</span>
+        </div>
+        <div class="input-container ic2" style=" display: grid; justify-content: start;">
+        <input type="checkbox"  th:field="*{isProjectActive}" id="isProjectActive">
+        <label for="isProjectActive" class="placeholder">Is Project Active:</label>
+        </div>
+           <input class="submit" type="submit" value="Submit">
+    </form>
+    </div>
+   </div>
+  </main>
+ </section>
+ </section>
+</body>
+<script src="/js/dashboard.js"></script>
+</html>
